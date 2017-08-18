@@ -10,5 +10,37 @@ namespace HairSalon.Tests
   {
     public ClientTest()
     {
-      DBConfiguration.ConnectionString = "server=localhost;user id=;password=root;port=3306;database=hair_salon_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=3306;database=hair_salon_test;";
     }
+
+    [TestMethod]
+    public void GetAll_GetAllClientsAtFirst_0()
+    {
+
+    }
+
+    [TestMethod]
+    public void Save_SavesClientToDatabase_ClientList()
+    {
+
+    }
+
+    [TestMethod]
+    public void Update_UpdatesClientNameInDatabase_Client()
+    {
+
+    }
+
+    [TestMethod]
+    public void Delete_DeletesClientInDatabase_ClientList()
+    {
+
+    }
+
+    public void Dispose()
+    {
+      Client.DeleteAll();
+      Stylist.DeleteAll();
+    }
+  }
+}
