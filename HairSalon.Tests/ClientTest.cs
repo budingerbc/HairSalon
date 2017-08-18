@@ -40,7 +40,6 @@ namespace HairSalon.Tests
     public void Dispose()
     {
       Client.DeleteAll();
-      Stylist.DeleteAll();
     }
   }
 }

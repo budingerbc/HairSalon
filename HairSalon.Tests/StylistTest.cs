@@ -37,6 +37,12 @@ namespace HairSalon.Tests
     [TestMethod]
     public void Find_FindsStylistByIdInDatabase_Stylist()
     {
+      Stylist expected = new Stylist("Harry");
+      expected.Save();
+
+      Stylist actual = Stylist.Find(expected.GetId());
+
+      Assert.AreEqual(expected, actual);
     }
 
     // [TestMethod]
@@ -55,13 +61,28 @@ namespace HairSalon.Tests
     // }
 
     [TestMethod]
-    public void FindAllClients_ReturnsAllClientsOfStylist_ClientList()
+    public void GetAllClients_ReturnsAllClientsOfStylist_ClientList()
     {
+      Stylist stylistOne = new Stylist("Jon");
+      Stylist stylistTwo = new Stylist("Snow");
+      stylistOne.Save();
+      stylistTwo.Save();
+
+      Client clientOne = new Client("A", stylistOne.GetId());
+      Client clientTwo = new Client("B", stylistOne.GetId());
+      Client clientThree = new Client("C", stylistTwo.GetId());
+      clientOne.Save();
+      clientTwo.Save();
+      clientThree.Save();
+
+      List<Client> expected = new List<Client> {clientOne, clientTwo};
+      List<Client> actual = stylistOne.GetAllClients();
+
+      CollectionAssert.AreEqual(expected, actual);
     }
 
     public void Dispose()
     {
-      Client.DeleteAll();
       Stylist.DeleteAll();
     }
   }
