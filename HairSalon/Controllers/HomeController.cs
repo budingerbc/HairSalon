@@ -81,6 +81,5 @@ namespace HairSalon.Controllers
 
       return View("StylistDetails", Stylist.Find(styleId));
     }
-
   }
 }

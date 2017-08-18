@@ -2,33 +2,35 @@
   Layout = "_Layout";
 }
 
-<div class="container">
-  <div class="jumbotron">
-    <h1>Silvia's Salon</h1>
-  </div>
+<div class="jumbotron">
+  <h1>Silvia's Salon</h1>
+</div>
 
-  <div class="navbuttons">
-    <form action="/stylists-deleted" method="post">
-      <a href="/"><button type="button" class="btn btn-info">Home</button></a>
-      <a href="/add-stylist"><button type="button" class="btn btn-success">Hire Stylist</button></a>
-      <button type="submit" class="btn btn-danger">Fire All Stylists!</button>
-    </form>
-  </div>
-
+<div class="navbuttons">
+  <form action="/stylists-deleted" method="post">
+    <a href="/"><button type="button" class="btn btn-info">Home</button></a>
+    <a href="/add-stylist"><button type="button" class="btn btn-success">Hire Stylist</button></a>
+    <button type="submit" class="btn btn-danger">Fire All Stylists!</button>
+  </form>
+</div>
 
 
 
-
-  <h3>Available Styists</h3>
-
-  @if(@Model.Count == 0)
-  {
-    <h4>No hair stylists work here yet.  Hire some!</h4>
-  }
-  else
-  {
-    @foreach(var stylist in @Model)
-    {
+@if(@Model.Count == 0)
+{
+  <div class="well"><h4>No hair stylists work here yet.  Hire some!</h4></div>
+}
+else
+{
+  <div class="panel panel-info">
+    <div class="panel-heading"><h3>Available Stylists</h3></div>
+    <div class="panel-body">
+      @foreach(var stylist in @Model)
+      {
+      <div class="well">
       <h4><a href="/stylist-details/@stylist.GetId()">@stylist.GetName()</a></h4>
-    }
-  }
+      </div>
+      }
+    </div>
+  </div>
+}
