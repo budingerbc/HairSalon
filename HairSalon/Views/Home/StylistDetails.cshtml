@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Silvia's Salon</h1>
+  </div>
+
+  <div class="navbuttons">
+    <form action="/stylists-deleted" method="post">
+      <a href="/"><button type="button" class="btn btn-info">Home</button></a>
+      <a href="/add-stylist"><button type="button" class="btn btn-success">Hire Stylist</button></a>
+      <a href="/stylist-details/@Model.GetId()/add-client"><button type="button" class="btn btn-primary">Add Client</button></a>
+      <button type="submit" class="btn btn-danger">Fire All Stylists!</button>
+    </form>
+  </div>
+
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h4>@Model.GetName()'s clients:</h4>
+    </div>
+    <div class="panel-body">
+      @foreach(var client in @Model.GetAllClients())
+      {
+        <div class="well">
+        <form action="/stylist-details/@Model.GetId()/client-deleted/@client.GetId()" method="post">
+          <li><a href="/stylist-details/@Model.GetId()/edit-client/@client.GetId()">@client.GetName()</a><button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash
+            " aria-hidden="true"></span></button></li>
+          </form>
+        </div>
+        }
+      </div>
+    </div>
+  </div>

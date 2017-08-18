@@ -1,0 +1,37 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>Silvia's Salon</h1>
+  </div>
+
+  <div class="navbuttons">
+    <form action="/stylists-deleted" method="post">
+      <a href="/"><button type="button" class="btn btn-info">Home</button></a>
+      <a href="/add-stylist"><button type="button" class="btn btn-success">Hire Stylist</button></a>
+      <button type="submit" class="btn btn-danger">Fire All Stylists!</button>
+    </form>
+  </div>
+
+  <div class="alert alert-info">
+    <h3>Update @Model["client"].GetName()'s information:</h3>
+  </div>
+
+  <form class="form-horizontal" action='/stylist-details/@Model["stylist"].GetId()/client-edited/@Model["client"].GetId()' method="post">
+    <div class="form-group">
+      <div class="row">
+        <label class="control-label col-sm-2" for="edit-client">Edit Name:</label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" name="client-edited" input pattern=".{1,}" required title="One or more characters">
+        </div>
+        <div class="col-sm-2">
+          <button type="submit" class="btn btn-success">Update Client!</button>
+        </div>
+      </div>
+
+
+    </div>
+  </form>
+</div>
