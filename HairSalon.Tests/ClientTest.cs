@@ -16,7 +16,10 @@ namespace HairSalon.Tests
     [TestMethod]
     public void GetAll_GetAllClientsAtFirst_0()
     {
+      int expected = 0;
+      int actual = Client.GetAll().Count;
 
+      Assert.AreEqual(expected, actual);
     }
 
     [TestMethod]
